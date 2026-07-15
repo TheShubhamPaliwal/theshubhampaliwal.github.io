@@ -71,6 +71,9 @@
         grid-template-columns:repeat(2,1fr);
 
     }
+    .fw-filter-btn{
+        font-size: 14px;
+    }
 
 }
 
@@ -80,6 +83,9 @@
 
         grid-template-columns:1fr;
 
+    }
+    .fw-filter-btn{
+        font-size: 14px;
     }
 
 }

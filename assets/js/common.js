@@ -384,6 +384,7 @@ $(document).ready(function () {
       niceScroll
     -------------------------------------------------------------------*/
 
+    /*
     $('textarea').niceScroll({
         horizrailenabled: false,
         cursorcolor: "#383838",
@@ -391,6 +392,7 @@ $(document).ready(function () {
         cursorwidth: '3px',
         railpadding: { top: 10, right: 2, left: 0, bottom: 10 }
     });
+    */
 
 
     /*-----------------------------------------------------------------
@@ -448,14 +450,17 @@ $(document).ready(function () {
       Contacts form
     -------------------------------------------------------------------*/
 
-    $("#contact-form").validator().on("submit", function (event) {
-        if (event.isDefaultPrevented()) {
-            formError();
-            submitMSG(false, "Please fill in the form...");
-        } else {
-            event.preventDefault();
-            submitForm();
+    $("#contact-form").on("submit", function (event) {
+
+        event.preventDefault();
+
+        if (!this.checkValidity()) {
+            this.reportValidity();
+            return;
         }
+
+        submitForm();
+
     });
 
     function submitForm() {
@@ -529,7 +534,7 @@ $(document).ready(function () {
 
         turnstile.reset();
 
-        $("#contact-Form")
+        $("#contact-form")
             .removeClass()
             .addClass('shake animated')
             .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
